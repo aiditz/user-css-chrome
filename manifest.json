@@ -1,0 +1,29 @@
+{
+	"applications": {
+		"gecko": { "id": "user-css-chrome@fakecake.org", "update_url": "https://fakecake.org/xpi/updates.php" }
+	},
+	"icons": {
+		"16": "icons/icon16.png",
+		"48": "icons/icon48.png",
+		"128": "icons/icon128.png"
+  },
+  "name": "Bloat-free user stylesheets",
+  "version": "0.9.3",
+  "manifest_version": 2,
+  "description": "Injects user stylesheets, without bloat.",
+	"update_url": "https://fakecake.org/crx-updates.php",
+  "permissions": [ "http://*/*", "https://*/*", "storage" ],
+  "background": {
+        "scripts": [ "jquery.js", "background.js" ]
+    },
+  "options_ui": {
+		"open_in_tab": true,
+		"page": "options.html"
+	},
+    "content_scripts": [ {
+      "all_frames": true,
+      "js": [ "jquery.js", "content.js" ],
+      "matches": [ "http://*/*", "https://*/*" ],
+      "run_at": "document_start"
+   } ]
+}
